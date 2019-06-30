@@ -1,26 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {ApolloProvider} from 'react-apollo';
-const client = import( './apollo-store/client');
+import { Helmet } from 'react-helmet';
+const client = React.lazy(() => import( './apollo-store/client'));
 
 export const App = () => {
     return (
         <ApolloProvider client={client}>
+            <Helmet>
+                <meta charSet='utf-8'/>
+                <title>My apollo app</title>
+            </Helmet>
             <div className="App">
                 <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <p>
-                        Edit <code>src/App.js</code> and save to reload.
-                    </p>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Learn React
-                    </a>
                 </header>
             </div>
         </ApolloProvider>
