@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {ApolloProvider} from 'react-apollo';
 import { Helmet } from 'react-helmet';
-const client = React.lazy(() => import( './apollo-store/client'));
+const client = React.lazy(() => import( '../apollo-store'));
 
 export const App = () => {
     return (

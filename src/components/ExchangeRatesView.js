@@ -1,6 +1,6 @@
 import React from "react";
-import { Query } from "react-apollo";
-import { gql } from "apollo-boost";
+import { Query } from "react-apollo/index";
+import { gql } from "apollo-boost/lib/index";
 
 export const ExchangeRates = () => (
   <Query
