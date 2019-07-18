@@ -1,1 +1,3 @@
-export * as SignUp from './SignUpView';
+import { SignUpView } from "./SignUpView";
+
+export { SignUpView };

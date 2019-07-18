@@ -4,10 +4,10 @@ import { ApolloProvider } from "react-apollo";
 import { Helmet } from "react-helmet";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import {
-    Login,
-    SignUp,
-    Users
-} from '../components';
+  // Login,
+  // SignUp,
+  UsersListView
+} from "../components";
 
 const client = React.lazy(() => import("../apollo-store/client"));
 
@@ -20,15 +20,15 @@ export const App = () => {
           <title>My apollo app</title>
         </Helmet>
         <div className="App">
-          <header className="App-header"/>
+          <header className="App-header" />
         </div>
+        <Router>
           <Switch>
-            <Router>
-                <Route exact path='/login' component={Login}/>
-                <Route exact path='/signup' component={SignUp}/>
-                <Route exact path='/users' component={Users}/>
-            </Router>
+            {/*<Route exact path='/login' component={Login}/>*/}
+            {/*<Route exact path='/signup' component={SignUp}/>*/}
+            <Route exact path="/" component={UsersListView} />
           </Switch>
+        </Router>
       </ApolloProvider>
     </>
   );

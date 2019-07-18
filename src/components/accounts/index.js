@@ -1,4 +1,4 @@
-import {Login} from './login';
-import {SignUp} from './create-accounts';
+import { LoginView } from "./login";
+import { SignUpView } from "./create-accounts";
 
-export {Login, SignUp}
+export { LoginView, SignUpView };
