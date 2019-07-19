@@ -1,15 +1,24 @@
-import React from 'react';
-import './App.css';
-import {ApolloProvider} from 'react-apollo';
-import {App} from './App';
+import React from "react";
+import "./App.css";
+import { ApolloProvider } from "react-apollo";
+import { App } from "./App";
+import { InMemoryCache } from "apollo-cache-inmemory";
+import { ApolloClient } from "apollo-client";
+import { createHttpLink } from "apollo-link-http";
 
-const client = React.lazy(() => import( '../apollo-store/client'));
+const client = new ApolloClient({
+  link: createHttpLink({ uri: "http://localhost:4000" }),
+  cache: new InMemoryCache(),
+  connectToDevTools: true,
+  queryDeduplication: true
+});
+
+console.log("client: ", client);
 
 export const Root = () => {
-
-    return (
-        <ApolloProvider client={client}>
-            <App client={client}/>
-        </ApolloProvider>
-    );
-}
+  return (
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  );
+};

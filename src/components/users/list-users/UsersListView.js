@@ -2,10 +2,9 @@ import React from "react";
 import { Query } from "react-apollo/index";
 import { gql } from "apollo-boost/lib/index";
 
-export const UsersListView = ({ client }) => {
+export const UsersListView = () => {
   return (
     <Query
-      client={client}
       query={gql`
         {
           users {
@@ -16,15 +15,18 @@ export const UsersListView = ({ client }) => {
       `}
     >
       {({ loading, error, data }) => {
+          console.log('data', data);
         if (loading) return <div>loading...</div>;
         if (error) return <div>error!</div>;
-
-        return (
-          <>
-            <div>{data.map(user => user.username)}</div>
+        if (Array.isArray(data.users)) {
+          return (
+            <>
+              <div>{data.users.map(user => user.username)}</div>
               <div>loading...</div>
-          </>
-        );
+            </>
+          );
+        }
+        return null;
       }}
     </Query>
   );

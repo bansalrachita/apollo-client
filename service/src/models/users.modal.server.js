@@ -1,6 +1,6 @@
-const data = require('./data');
-const DataSource = require('apollo-datasource')
-class User extends DataSource{
+const data = require('../datasources/data');
+const DataSource = require('apollo-datasource/dist/index').DataSource;
+class UsersModalServer extends DataSource{
     constructor({store}){
         super();
 
@@ -42,4 +42,4 @@ class User extends DataSource{
     }
 }
 
-module.exports = User;
+module.exports = UsersModalServer;
