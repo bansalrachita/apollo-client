@@ -3,7 +3,7 @@ const {gql} = require('apollo-server/dist/index');
 module.exports = gql`
     type Query {
     # Gets a list of suggested users.
-        users: [User]!
+        users(pageSize:Int, after:String): UserConnection!
     # Get a user by Id.     
         user(id: ID!): User
     # Get the current user profile. (Revisit this query)    
@@ -16,6 +16,12 @@ module.exports = gql`
         viewMyInvitations(senderId: ID, receiverId: ID): [Invitation]!
     #View an invitation by invite ID    
         viewInvitation(id: ID!): Invitation                    
+    }
+    
+    type UserConnection {
+        cursor: String
+        hasMore: Boolean!
+        users: [User]
     }
     
     type User {

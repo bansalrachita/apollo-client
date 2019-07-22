@@ -9,7 +9,7 @@ import { createHttpLink } from "apollo-link-http";
 const client = new ApolloClient({
   link: createHttpLink({ uri: "http://localhost:4000" }),
   cache: new InMemoryCache(),
-  connectToDevTools: true,
+  connectToDevTools: process.env.NODE_ENV === 'development',
   queryDeduplication: true
 });
 
