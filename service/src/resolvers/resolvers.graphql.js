@@ -1,10 +1,9 @@
 const paginateResults = require("../../utils").paginateResults;
-
+console.log('paginateResults: ', paginateResults);
 module.exports = {
   Query: {
-    users: (_, { pageSize = 20, after }, { dataSources }) => {
-      const allUsers = async () =>
-        await dataSources.usersService.getAllLUsers();
+    users: async (_, { pageSize = 20, after }, { dataSources }) => {
+      const allUsers = await dataSources.usersService.getAllLUsers();
       const users = paginateResults({
         after,
         pageSize,

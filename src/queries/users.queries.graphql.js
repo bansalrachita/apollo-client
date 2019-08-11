@@ -1,10 +1,12 @@
-import {gql} from "apollo-boost";
+import  gql  from "graphql-tag";
 
 export const GET_USERS = gql`
-    {
-      users {
-        id
-        username
-      }
+    query getUsers($pageSize: Int, $after: String) {
+        users(pageSize: $pageSize, after: $after) {
+            users {
+              id
+              username
+            }
+        }
     }
   `;
